@@ -1,0 +1,29 @@
+﻿@model RegisterVM
+@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/assets/style.css" />
+    <title>Login</title>
+</head>
+
+<body>
+    <section class="area-login">
+        <h1>Giriş</h1>
+        <div class="login">
+            <form action="#">
+                <input type="text" name="nome" placeholder="nome de usuário" autofocus />
+                <input type="password" name="senha" placeholder="sua senha" />
+                <input type="submit" value="entrar" />
+            </form>
+            <p>Hesaba ehtiyacın var? <a asp-action="Register">Qeydiyyatdan keç</a></p>
+        </div>
+    </section>
+</body>
+
+</html>
