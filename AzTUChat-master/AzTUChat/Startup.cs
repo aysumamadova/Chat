@@ -1,4 +1,5 @@
 using AzTUChat.DAL;
+using AzTUChat.Hubs;
 using AzTUChat.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -48,6 +49,7 @@ namespace AzTUChat
                 opt.Lockout.MaxFailedAccessAttempts = 3;
                 opt.Lockout.DefaultLockoutTimeSpan = System.TimeSpan.FromMinutes(10);
             });
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,6 +70,8 @@ namespace AzTUChat
 
             app.UseRouting();
 
+           
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -75,6 +79,7 @@ namespace AzTUChat
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapHub<ChatHub>("/chatHub");
             });
         }
     }
